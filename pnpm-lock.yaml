@@ -15,8 +15,8 @@ importers:
         specifier: ^3.2.3
         version: 3.2.3
       fast-cpy:
-        specifier: ^0.0.8
-        version: 0.0.8
+        specifier: ^0.0.13
+        version: 0.0.13
       fast-glob:
         specifier: ^3.3.1
         version: 3.3.1
@@ -416,9 +416,10 @@ packages:
       tmp: 0.0.33
     dev: false
 
-  /fast-cpy@0.0.8:
-    resolution: {integrity: sha512-paH9qztkAG0Q9foPXNU804UjoS/sUkc6C6rflViWYFIsz/uWXhjWl9ClabD9SiRoHb6VmX2P7pqx6G1vXgPHdA==}
+  /fast-cpy@0.0.13:
+    resolution: {integrity: sha512-J1s8ZQvwQxzTKz5ZMn2qX1f4xxVGjh+XQfBG2ncD8lFu6+MDVCn40tkYjpK5dZ+eQ9t47sxCB/eRAlyObl2Xkw==}
     hasBin: true
+    requiresBuild: true
     dependencies:
       consola: 2.15.3
       kolorist: 1.8.0
