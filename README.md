@@ -1,4 +1,4 @@
-# n-init
+# n-init-project
 
 A simple template producer cli for quickly creating projects
 
@@ -7,7 +7,7 @@ A simple template producer cli for quickly creating projects
 ## Usage
 
 ```shell
-npx n-init
+npx n-init-project
 ```
 
 <br />

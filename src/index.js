@@ -6,7 +6,7 @@ const { consola } = require("consola");
 const { copyBin } = require("fast-cpy");
 const { select, input } = require("@inquirer/prompts");
 
-const log = consola.withTag("n-init");
+const log = consola.withTag("n-init-project");
 
 async function init() {
   const projects = await fg("*", {

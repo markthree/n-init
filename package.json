@@ -1,12 +1,12 @@
 {
   "version": "0.0.1",
-  "name": "n-init",
+  "name": "n-init-project",
   "description": "A simple template producer cli for quickly creating projects",
   "main": "./src/index.js",
   "bin": "./src/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/markthree/n-init.git"
+    "url": "git+https://github.com/markthree/n-init-project.git"
   },
   "files": [
     "src",
@@ -27,7 +27,7 @@
   },
   "bugs": {
     "email": "1801982702@qq.com",
-    "url": "https://github.com/markthree/n-init/issues"
+    "url": "https://github.com/markthree/n-init-project/issues"
   },
   "license": "MIT",
   "devDependencies": {
