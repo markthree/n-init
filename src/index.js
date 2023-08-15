@@ -3,7 +3,8 @@ const fg = require("fast-glob");
 const { resolve } = require("path");
 const { cyan } = require("kolorist");
 const { consola } = require("consola");
-const { copyBin } = require("fast-cpy");
+const { copy } = require("fast-cpy");
+const { cwd } = require("process");
 const { select, input } = require("@inquirer/prompts");
 
 const log = consola.withTag("n-init-project");
@@ -21,14 +22,16 @@ async function init() {
     choices,
   });
 
-  const dest = await input({
+  let dest = await input({
     default: `${answer}-starter`,
     message: "input your project name",
   });
 
+  dest = resolve(process.cwd(), dest);
+
   const src = resolve(__dirname, answer);
 
-  await copyBin(src, dest);
+  await copy(src, dest);
 
   log.success(`Successfully generated → ${cyan(dest)}`);
 }
