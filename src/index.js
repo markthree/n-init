@@ -10,9 +10,11 @@ const { select, input } = require("@inquirer/prompts");
 const log = consola.withTag("n-init-project");
 
 async function init() {
+  const projectsDir = resolve(__dirname, "../projects");
+
   const projects = await fg("*", {
     onlyDirectories: true,
-    cwd: resolve(__dirname, "../projects"),
+    cwd: projectsDir,
   });
 
   const choices = projects.map((p) => ({ name: p, value: p }));
@@ -22,14 +24,12 @@ async function init() {
     choices,
   });
 
-  let dest = await input({
+  const dest = await input({
     default: `${answer}-starter`,
     message: "input your project name",
   });
 
-  dest = resolve(process.cwd(), dest);
-
-  const src = resolve(__dirname, answer);
+  const src = resolve(projectsDir, answer);
 
   await copy(src, dest);
 
