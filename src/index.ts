@@ -1,4 +1,4 @@
-import { resolve } from 'path'
-const foo = 1
+import { resolve } from "path";
+const foo = 1;
 
-export { resolve, foo }
+export { foo, resolve };
