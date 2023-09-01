@@ -30,9 +30,7 @@ async function init() {
     message: "输入你的项目名",
   });
 
-  const _cwd = process.cwd();
-
-  dest = resolve(_cwd, dest);
+  dest = resolve(process.cwd(), dest);
 
   if (existsSync(dest)) {
     log.error("你的项目已存在，请换一个项目名");
@@ -66,7 +64,7 @@ async function init() {
     });
     execSync(pm, {
       stdio: "inherit",
-      cwd: _cwd,
+      cwd: dest,
     });
 
     log.success(`安装项目成功`);
