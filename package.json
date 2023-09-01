@@ -32,7 +32,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.17.12",
-    "bumpp": "^9.2.0"
+    "bumpp": "^9.2.0",
+    "node-sass-version-fix": "^0.1.0"
   },
   "dependencies": {
     "@inquirer/prompts": "^3.0.4",

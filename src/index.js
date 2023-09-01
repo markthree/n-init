@@ -6,6 +6,7 @@ const { consola } = require("consola");
 const { copy } = require("fast-cpy");
 const { existsSync } = require("fs");
 const { execSync } = require("child_process");
+const { fixPackageJson } = require("node-sass-version-fix");
 const { select, input, confirm } = require("@inquirer/prompts");
 
 const log = consola.withTag("n-init-project");
@@ -40,6 +41,11 @@ async function init() {
   const src = resolve(projectsDir, answer);
 
   await copy(src, dest);
+
+  if (answer === "vuecli-vue2") {
+    await fixPackageJson(resolve(dest, "package.json"));
+    log.success("自动 fix node-sass 版本");
+  }
 
   log.success(`生成项目成功 → ${cyan(dest)}`);
 

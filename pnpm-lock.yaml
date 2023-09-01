@@ -30,6 +30,9 @@ importers:
       bumpp:
         specifier: ^9.2.0
         version: 9.2.0
+      node-sass-version-fix:
+        specifier: ^0.1.0
+        version: 0.1.0
 
   examples:
     devDependencies:
@@ -361,7 +364,6 @@ packages:
   /consola@3.2.3:
     resolution: {integrity: sha512-I5qxpzLv+sJhTVEoLYNcTW+bThDCPsit0vLNKShZx6rLtpilNpmmeTPaeqJb9ZE9dV3DGaeby6Vuhrw38WjeyQ==}
     engines: {node: ^14.18.0 || >=16.10.0}
-    dev: false
 
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
@@ -563,7 +565,6 @@ packages:
 
   /kolorist@1.8.0:
     resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
-    dev: false
 
   /lru-cache@6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
@@ -633,6 +634,14 @@ packages:
 
   /node-fetch-native@1.0.2:
     resolution: {integrity: sha512-KIkvH1jl6b3O7es/0ShyCgWLcfXxlBrLBbP3rOr23WArC66IMcU4DeZEeYEOwnopYhawLTn7/y+YtmASe8DFVQ==}
+    dev: true
+
+  /node-sass-version-fix@0.1.0:
+    resolution: {integrity: sha512-j1t86t2IUUNul58/x5T44I/A2PwzaPDmIwBX2ScjuSBffvLSjABRfckIVbep1bU+kvtu1shnf0r8JsdnvkpwUA==}
+    hasBin: true
+    dependencies:
+      consola: 3.2.3
+      kolorist: 1.8.0
     dev: true
 
   /normalize-path@3.0.0:
