@@ -6,7 +6,7 @@ const { consola } = require("consola");
 const { copy } = require("fast-cpy");
 const { existsSync } = require("fs");
 const { execSync } = require("child_process");
-const { select, input } = require("@inquirer/prompts");
+const { select, input, confirm } = require("@inquirer/prompts");
 
 const log = consola.withTag("n-init-project");
 
@@ -39,32 +39,38 @@ async function init() {
     return;
   }
 
-  const pm = await select({
-    message: "选择你使用的包管理器?",
-    choices: [{
-      name: "npm",
-      value: "npm install",
-    }, {
-      name: "yarn",
-      value: "yarn",
-    }, {
-      name: "pnpm",
-      value: "pnpm install",
-    }],
-  });
-
   const src = resolve(projectsDir, answer);
 
   await copy(src, dest);
 
   log.success(`生成项目成功 → ${cyan(dest)}`);
 
-  execSync(pm, {
-    stdio: "inherit",
-    cwd: _cwd,
+  const autoInstall = await confirm({
+    default: true,
+    message: "是否自动 install",
   });
 
-  log.success(`安装项目成功`);
+  if (autoInstall) {
+    const pm = await select({
+      message: "选择你使用的包管理器?",
+      choices: [{
+        name: "npm",
+        value: "npm install",
+      }, {
+        name: "yarn",
+        value: "yarn",
+      }, {
+        name: "pnpm",
+        value: "pnpm install",
+      }],
+    });
+    execSync(pm, {
+      stdio: "inherit",
+      cwd: _cwd,
+    });
+
+    log.success(`安装项目成功`);
+  }
 }
 
 init();
