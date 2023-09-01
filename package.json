@@ -1,5 +1,5 @@
 {
-  "version": "0.1.2",
+  "version": "0.2.0",
   "name": "n-init-project",
   "description": "A simple template producer cli for quickly creating projects",
   "main": "./src/index.js",
@@ -31,11 +31,11 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^18.17.5",
-    "bumpp": "^9.1.1"
+    "@types/node": "^18.17.12",
+    "bumpp": "^9.2.0"
   },
   "dependencies": {
-    "@inquirer/prompts": "^3.0.2",
+    "@inquirer/prompts": "^3.0.4",
     "consola": "^3.2.3",
     "fast-cpy": "^0.0.13",
     "fast-glob": "^3.3.1",
