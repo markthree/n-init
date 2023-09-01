@@ -32,14 +32,14 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.17.12",
-    "bumpp": "^9.2.0",
-    "node-sass-version-fix": "^0.1.0"
+    "bumpp": "^9.2.0"
   },
   "dependencies": {
     "@inquirer/prompts": "^3.0.4",
     "consola": "^3.2.3",
     "fast-cpy": "^0.0.13",
     "fast-glob": "^3.3.1",
-    "kolorist": "^1.8.0"
+    "kolorist": "^1.8.0",
+    "node-sass-version-fix": "^0.1.0"
   }
 }
