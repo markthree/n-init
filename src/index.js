@@ -8,6 +8,8 @@ const { existsSync } = require("fs");
 const { execSync } = require("child_process");
 const { fixPackageJson } = require("node-sass-version-fix");
 const { select, input, confirm } = require("@inquirer/prompts");
+const { syncNpmrc } = require("./rc");
+const { green } = require("kolorist");
 
 const log = consola.withTag("n-init-project");
 
@@ -46,6 +48,10 @@ async function init() {
     await fixPackageJson(resolve(dest, "package.json"));
     log.success("自动 fix node-sass 版本");
   }
+
+  await syncNpmrc(answer);
+
+  log.success(`同步 .npmrc → ${cyan(green(dest, ".npmrc"))}`);
 
   log.success(`生成项目成功 → ${cyan(dest)}`);
 
