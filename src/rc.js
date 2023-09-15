@@ -1,7 +1,7 @@
 // Npmrc will be ignored by npm, so manual synchronization is required
 
 const { existsSync } = require("fs");
-const { writeFile } = require("fs/promises");
+const { writeFile, readFile, appendFile } = require("fs/promises");
 
 async function writeNpmrc(
   record,

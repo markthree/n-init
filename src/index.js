@@ -51,7 +51,7 @@ async function init() {
 
   await syncNpmrc(answer);
 
-  log.success(`同步 .npmrc → ${cyan(green(dest, ".npmrc"))}`);
+  log.success(`同步 .npmrc → ${cyan(resolve(dest, ".npmrc"))}`);
 
   log.success(`生成项目成功 → ${cyan(dest)}`);
 
