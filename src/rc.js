@@ -2,11 +2,13 @@
 
 const { existsSync } = require("fs");
 const { writeFile, readFile, appendFile } = require("fs/promises");
+const { resolve } = require("path");
 
 async function writeNpmrc(
   record,
+  dest,
 ) {
-  const file = ".npmrc";
+  const file = resolve(dest, ".npmrc");
   if (!existsSync(file)) {
     await writeFile(file, record, { encoding: "utf-8" });
   } else {
@@ -29,11 +31,11 @@ const npmrcs = {
   ],
 };
 
-async function syncNpmrc(project) {
+async function syncNpmrc(project, dest) {
   const npmrc = npmrcs[project];
   if (npmrc) {
     for (const record of npmrc) {
-      await writeNpmrc(record);
+      await writeNpmrc(record, dest);
     }
   }
 }

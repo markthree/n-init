@@ -48,7 +48,7 @@ async function init() {
     log.success("自动 fix node-sass 版本");
   }
 
-  await syncNpmrc(answer);
+  await syncNpmrc(answer, dest);
 
   log.success(`同步 .npmrc → ${cyan(resolve(dest, ".npmrc"))}`);
 
