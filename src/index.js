@@ -70,7 +70,7 @@ async function init() {
         value: "pnpm install nuxt -D",
       }],
     });
-    log.info(`执行命令 → ${cmd}`);
+    log.info(`执行命令 → ${cyan(cmd)}`);
     execSync(cmd, {
       stdio: "inherit",
       cwd: dest,
@@ -99,7 +99,7 @@ async function init() {
       }],
     });
 
-    log.info(`执行命令 → ${cmd}`);
+    log.info(`执行命令 → ${cyan(cmd)}`);
 
     execSync(cmd, {
       stdio: "inherit",
