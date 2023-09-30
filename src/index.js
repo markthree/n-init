@@ -9,7 +9,6 @@ const { execSync } = require("child_process");
 const { fixPackageJson } = require("node-sass-version-fix");
 const { select, input, confirm } = require("@inquirer/prompts");
 const { syncNpmrc } = require("./rc");
-const { green } = require("kolorist");
 
 const log = consola.withTag("n-init-project");
 
@@ -55,13 +54,38 @@ async function init() {
 
   log.success(`生成项目成功 → ${cyan(dest)}`);
 
+  const isNuxt = answer === "nuxt";
+
+  if (isNuxt) {
+    const cmd = await select({
+      message: "选择你使用的包管理器?",
+      choices: [{
+        name: "npm",
+        value: "npm install nuxt -D",
+      }, {
+        name: "yarn",
+        value: "yarn add nuxt -D",
+      }, {
+        name: "pnpm",
+        value: "pnpm install nuxt -D",
+      }],
+    });
+    log.info(`执行命令 → ${cmd}`);
+    execSync(cmd, {
+      stdio: "inherit",
+      cwd: dest,
+    });
+    log.success(`安装项目成功`);
+    return;
+  }
+
   const autoInstall = await confirm({
     default: true,
     message: "是否自动 install",
   });
 
   if (autoInstall) {
-    const pm = await select({
+    const cmd = await select({
       message: "选择你使用的包管理器?",
       choices: [{
         name: "npm",
@@ -74,7 +98,10 @@ async function init() {
         value: "pnpm install",
       }],
     });
-    execSync(pm, {
+
+    log.info(`执行命令 → ${cmd}`);
+
+    execSync(cmd, {
       stdio: "inherit",
       cwd: dest,
     });
