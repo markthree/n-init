@@ -31,11 +31,11 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^18.18.1",
+    "@types/node": "^18.18.7",
     "bumpp": "^9.2.0"
   },
   "dependencies": {
-    "@inquirer/prompts": "^3.1.2",
+    "@inquirer/prompts": "^3.2.0",
     "consola": "^3.2.3",
     "fast-cpy": "^0.0.13",
     "fast-glob": "^3.3.1",
