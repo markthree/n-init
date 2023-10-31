@@ -1,0 +1,17 @@
+{
+  "name": "nitro-starter",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "dev": "nitropack dev",
+    "build": "nitropack build",
+    "prepare": "nitropack prepare",
+    "preview": "node .output/server/index.mjs"
+  },
+  "devDependencies": {
+    "nitropack": "^2.7.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -25,6 +25,9 @@ const npmrcs = {
     "auto-install-peers=true",
     "registry=https://registry.npmmirror.com/",
   ],
+  "nitro": [
+    "registry=https://registry.npmmirror.com/",
+  ],
   "vuecli-vue2": [
     "registry=https://registry.npmmirror.com/",
     "sass_binary_site=https://npm.taobao.org/mirrors/node-sass/",

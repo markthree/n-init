@@ -56,18 +56,20 @@ async function init() {
 
   const isNuxt = answer === "nuxt";
 
-  if (isNuxt) {
+  const isNitro = answer === "nitro";
+
+  if (isNuxt || isNitro) {
     const cmd = await select({
       message: "选择你使用的包管理器?",
       choices: [{
         name: "npm",
-        value: "npm install nuxt -D",
+        value: `npm install ${answer} -D`,
       }, {
         name: "yarn",
-        value: "yarn add nuxt -D",
+        value: `yarn add ${answer} -D`,
       }, {
         name: "pnpm",
-        value: "pnpm install nuxt -D",
+        value: `pnpm install ${answer} -D`,
       }],
     });
     log.info(`执行命令 → ${cyan(cmd)}`);
