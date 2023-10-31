@@ -26,6 +26,8 @@ const npmrcs = {
     "registry=https://registry.npmmirror.com/",
   ],
   "nitro": [
+    "shamefully-hoist=true",
+    "auto-install-peers=true",
     "registry=https://registry.npmmirror.com/",
   ],
   "vuecli-vue2": [
