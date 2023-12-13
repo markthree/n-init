@@ -64,13 +64,13 @@ async function init() {
       message: "选择你使用的包管理器?",
       choices: [{
         name: "npm",
-        value: `npm install ${pkg} -D`,
+        value: `npm install ${pkg} -D && npm run prepare`,
       }, {
         name: "yarn",
-        value: `yarn add ${pkg} -D`,
+        value: `yarn add ${pkg} -D && yarn prepare`,
       }, {
         name: "pnpm",
-        value: `pnpm install ${pkg} -D`,
+        value: `pnpm install ${pkg} -D && pnpm prepare`,
       }],
     });
     log.info(`执行命令 → ${cyan(cmd)}`);
