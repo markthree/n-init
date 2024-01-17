@@ -20,9 +20,8 @@ const dateRtf = new Intl.DateTimeFormat("zh-cn", {
   dateStyle: "short",
 });
 
-export function createLogInfo() {
+export function createLogInfo(event = useEvent()) {
   const now = Date.now();
-  const event = useEvent();
   const time = timeRtf.format(now);
   const date = dateRtf.format(now);
   const ip = getRequestIP(event, { xForwardedFor: true }) ?? "";
