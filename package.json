@@ -1,5 +1,5 @@
 {
-  "version": "0.7.4",
+  "version": "0.7.5",
   "name": "n-init-project",
   "description": "A simple template producer cli for quickly creating projects",
   "main": "./src/index.js",
