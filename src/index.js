@@ -8,7 +8,7 @@ const { existsSync } = require("fs");
 const { execSync } = require("child_process");
 const { fixPackageJson } = require("node-sass-version-fix");
 const { select, input, confirm } = require("@inquirer/prompts");
-const { syncNpmrc } = require("./rc");
+const { syncNpmrc, syncGitignore } = require("./sync");
 
 const log = consola.withTag("n-init-project");
 
@@ -51,6 +51,10 @@ async function init() {
   await syncNpmrc(answer, dest);
 
   log.success(`同步 .npmrc → ${cyan(resolve(dest, ".npmrc"))}`);
+
+  await syncGitignore(answer, dest);
+
+  log.success(`同步 .gitignore → ${cyan(resolve(dest, ".gitignore"))}`);
 
   log.success(`生成项目成功 → ${cyan(dest)}`);
 
