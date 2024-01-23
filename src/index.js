@@ -63,7 +63,7 @@ async function init() {
   const isNitro = answer === "nitro";
 
   if (isNuxt || isNitro) {
-    const pkg = isNitro ? "nitropack" : "nuxt";
+    const pkg = isNitro ? "nitropack" : "nuxt @nuxt/devtools";
     const cmd = await select({
       message: "选择你使用的包管理器?",
       choices: [{
