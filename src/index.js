@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { glob } from "fast-glob";
-import { resolve } from "path";
+import { dirname, resolve } from "path";
 import { cyan } from "kolorist";
 import { createConsola } from "consola";
 import { copy } from "fs-extra";
@@ -8,8 +8,11 @@ import { existsSync } from "fs";
 import { execSync } from "child_process";
 import { fixPackageJson } from "node-sass-version-fix";
 import { syncGitignore, syncNpmrc } from "./sync";
+import { fileURLToPath } from "url";
 
 const log = createConsola().withTag("n-init-project");
+
+const _dirname = dirname(fileURLToPath(import.meta.url));
 
 async function init() {
   const projectsDir = resolve(__dirname, "../projects");
