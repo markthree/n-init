@@ -2,17 +2,20 @@
   "version": "0.7.5",
   "name": "n-init-project",
   "description": "A simple template producer cli for quickly creating projects",
-  "main": "./src/index.js",
-  "bin": "./src/index.js",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "bin": "./dist/index.mjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/markthree/n-init-project.git"
   },
   "files": [
-    "src",
+    "dist",
     "projects"
   ],
   "scripts": {
+    "build": "unbuild",
+    "prepublishOnly": "pnpm run build",
     "release": "bumpp --commit --push --tag && npm publish"
   },
   "keywords": [
@@ -32,14 +35,12 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.11.10",
-    "bumpp": "^9.3.0"
-  },
-  "dependencies": {
-    "@inquirer/prompts": "^3.3.2",
+    "bumpp": "^9.3.0",
     "consola": "^3.2.3",
-    "fast-cpy": "^0.0.13",
     "fast-glob": "^3.3.2",
+    "fs-extra": "^11.2.0",
     "kolorist": "^1.8.0",
-    "node-sass-version-fix": "^0.1.0"
+    "node-sass-version-fix": "^0.1.0",
+    "unbuild": "^2.0.0"
   }
 }

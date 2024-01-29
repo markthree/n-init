@@ -1,35 +1,33 @@
 #!/usr/bin/env node
-const fg = require("fast-glob");
-const { resolve } = require("path");
-const { cyan } = require("kolorist");
-const { consola } = require("consola");
-const { copy } = require("fast-cpy");
-const { existsSync } = require("fs");
-const { execSync } = require("child_process");
-const { fixPackageJson } = require("node-sass-version-fix");
-const { select, input, confirm } = require("@inquirer/prompts");
-const { syncNpmrc, syncGitignore } = require("./sync");
+import { glob } from "fast-glob";
+import { resolve } from "path";
+import { cyan } from "kolorist";
+import { createConsola } from "consola";
+import { copy } from "fs-extra";
+import { existsSync } from "fs";
+import { execSync } from "child_process";
+import { fixPackageJson } from "node-sass-version-fix";
+import { syncGitignore, syncNpmrc } from "./sync";
 
-const log = consola.withTag("n-init-project");
+const log = createConsola().withTag("n-init-project");
 
 async function init() {
   const projectsDir = resolve(__dirname, "../projects");
 
-  const projects = await fg("*", {
+  const projects = await glob("*", {
     onlyDirectories: true,
     cwd: projectsDir,
   });
 
-  const choices = projects.map((p) => ({ name: p, value: p }));
+  const choices = projects.map((p) => ({ label: p, value: p }));
 
-  const answer = await select({
-    message: "选择你的模板?",
-    choices,
+  const answer = await log.prompt("选择你的模板?", {
+    type: "select",
+    options: choices,
   });
 
-  let dest = await input({
+  let dest = await log.prompt("输入你的项目名", {
     default: `${answer}-starter`,
-    message: "输入你的项目名",
   });
 
   dest = resolve(process.cwd(), dest);
@@ -64,9 +62,8 @@ async function init() {
 
   if (isNuxt || isNitro) {
     const pkg = isNitro ? "nitropack" : "nuxt @nuxt/devtools";
-    const cmd = await select({
-      message: "选择你使用的包管理器?",
-      choices: [{
+    const cmd = await log.prompt("选择你使用的包管理器?", {
+      options: [{
         name: "npm",
         value: `npm install ${pkg} -D && npm run prepare`,
       }, {
@@ -86,15 +83,13 @@ async function init() {
     return;
   }
 
-  const autoInstall = await confirm({
+  const autoInstall = await log.prompt("是否自动 install", {
     default: true,
-    message: "是否自动 install",
   });
 
   if (autoInstall) {
-    const cmd = await select({
-      message: "选择你使用的包管理器?",
-      choices: [{
+    const cmd = await log.prompt("选择你使用的包管理器?", {
+      options: [{
         name: "npm",
         value: "npm install",
       }, {

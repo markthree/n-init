@@ -1,6 +1,6 @@
-const { existsSync } = require("fs");
-const { writeFile, readFile, appendFile } = require("fs/promises");
-const { resolve } = require("path");
+import { existsSync } from "fs";
+import { resolve } from "path";
+import { appendFile, readFile, writeFile } from "fs/promises";
 
 // Npmrc will be ignored by npm, so manual synchronization is required
 const npmrcs = {
@@ -42,11 +42,12 @@ const gitignores = {
   ],
 };
 
-async function writeNpmrc(
+async function write(
   record,
   dest,
+  name = ".npmrc",
 ) {
-  const file = resolve(dest, ".npmrc");
+  const file = resolve(dest, name);
   if (!existsSync(file)) {
     await writeFile(file, record, { encoding: "utf-8" });
   } else {
@@ -57,37 +58,20 @@ async function writeNpmrc(
   }
 }
 
-async function writeGitignore(record, dest) {
-  const file = resolve(dest, ".gitignore");
-  if (!existsSync(file)) {
-    await writeFile(file, record, { encoding: "utf-8" });
-  } else {
-    const text = await readFile(file, { encoding: "utf-8" });
-    if (!text.includes(record)) {
-      await appendFile(file, "\n" + record);
-    }
-  }
-}
-
-async function syncNpmrc(project, dest) {
+export async function syncNpmrc(project, dest) {
   const npmrc = npmrcs[project];
   if (npmrc) {
     for (const record of npmrc) {
-      await writeNpmrc(record, dest);
+      await write(record, dest, ".npmrc");
     }
   }
 }
 
-async function syncGitignore(project, dest) {
+export async function syncGitignore(project, dest) {
   const gitignore = gitignores[project];
   if (gitignore) {
     for (const record of gitignore) {
-      await writeGitignore(record, dest);
+      await write(record, dest, ".gitignore");
     }
   }
 }
-
-module.exports = {
-  syncNpmrc,
-  syncGitignore,
-};
