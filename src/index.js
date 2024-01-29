@@ -15,7 +15,7 @@ const log = createConsola().withTag("n-init-project");
 const _dirname = dirname(fileURLToPath(import.meta.url));
 
 async function init() {
-  const projectsDir = resolve(__dirname, "../projects");
+  const projectsDir = resolve(_dirname, "../projects");
 
   const projects = await glob("*", {
     onlyDirectories: true,

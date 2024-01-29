@@ -5,7 +5,7 @@ export default defineBuildConfig({
   rollup: {
     esbuild: {
       minify: true,
-      target: "ES2019",
+      target: "ES2020",
       platform: "node",
       sourcemap: false,
       treeShaking: true,
