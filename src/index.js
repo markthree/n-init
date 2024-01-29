@@ -30,7 +30,9 @@ async function init() {
   });
 
   let dest = await log.prompt("输入你的项目名", {
+    type: "text",
     default: `${answer}-starter`,
+    placeholder: `${answer}-starter`,
   });
 
   dest = resolve(process.cwd(), dest);
@@ -66,14 +68,15 @@ async function init() {
   if (isNuxt || isNitro) {
     const pkg = isNitro ? "nitropack" : "nuxt @nuxt/devtools";
     const cmd = await log.prompt("选择你使用的包管理器?", {
+      type: "select",
       options: [{
-        name: "npm",
+        label: "npm",
         value: `npm install ${pkg} -D && npm run prepare`,
       }, {
-        name: "yarn",
+        label: "yarn",
         value: `yarn add ${pkg} -D && yarn prepare`,
       }, {
-        name: "pnpm",
+        label: "pnpm",
         value: `pnpm install ${pkg} -D && pnpm prepare`,
       }],
     });
@@ -87,19 +90,21 @@ async function init() {
   }
 
   const autoInstall = await log.prompt("是否自动 install", {
+    type: "confirm",
     default: true,
   });
 
   if (autoInstall) {
     const cmd = await log.prompt("选择你使用的包管理器?", {
+      type: "select",
       options: [{
-        name: "npm",
+        label: "npm",
         value: "npm install",
       }, {
-        name: "yarn",
+        label: "yarn",
         value: "yarn",
       }, {
-        name: "pnpm",
+        label: "pnpm",
         value: "pnpm install",
       }],
     });
