@@ -4,7 +4,10 @@
   "description": "A simple template producer cli for quickly creating projects",
   "type": "module",
   "main": "./dist/index.mjs",
-  "bin": "./dist/index.mjs",
+  "bin": {
+    "init-project": "./dist/index.mjs",
+    "n-init-project": "./dist/index.mjs"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/markthree/n-init-project.git"
