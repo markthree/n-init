@@ -36,11 +36,13 @@
   "devDependencies": {
     "@types/node": "^20.11.10",
     "bumpp": "^9.3.0",
-    "consola": "^3.2.3",
     "fast-glob": "^3.3.2",
     "fs-extra": "^11.2.0",
     "kolorist": "^1.8.0",
     "node-sass-version-fix": "^0.1.0",
     "unbuild": "^2.0.0"
+  },
+  "dependencies": {
+    "consola": "^3.2.3"
   }
 }
