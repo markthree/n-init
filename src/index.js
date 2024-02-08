@@ -71,13 +71,13 @@ async function init() {
       type: "select",
       options: [{
         label: "npm",
-        value: `npm install ${pkg} -D && npm run prepare`,
+        value: `npm install ${pkg} -D && npm install`,
       }, {
         label: "yarn",
-        value: `yarn add ${pkg} -D && yarn prepare`,
+        value: `yarn add ${pkg} -D && yarn install`,
       }, {
         label: "pnpm",
-        value: `pnpm install ${pkg} -D && pnpm prepare`,
+        value: `pnpm install ${pkg} -D && pnpm install`,
       }],
     });
     log.info(`执行命令 → ${cyan(cmd)}`);
