@@ -1,7 +1,5 @@
 {
-  "name": "nitro-starter",
-  "description": "",
-  "private": true,
+  "type": "module",
   "scripts": {
     "dev": "nitropack dev",
     "build": "nitropack build",

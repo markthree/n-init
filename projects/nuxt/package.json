@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
