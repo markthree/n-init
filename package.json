@@ -1,5 +1,5 @@
 {
-  "version": "0.8.6",
+  "version": "0.8.7",
   "name": "n-init-project",
   "description": "A simple template producer cli for quickly creating projects",
   "type": "module",
